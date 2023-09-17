@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIBRARY</title>
+    <style>
+        button{
+            background-color: gray;
+            color:aqua;
+            width: 50px;
+            height: 30px;
+            font-size: large;
+            font-weight: bold;
+            outline: none;
+            transition: ease 0.15s;
+        }
+        button:hover{
+            color: black;
+            background-color: white;
+        }
+    </style>
+</head>
+<body style="background-color: black;">
+    <div id="all"></div>
+    <script>
+        var allLINK = {
+            "1,2":""
+        }
+        const btnTable = document.getElementById("all")
+        var btns = ""
+        for (let i = 0; i < 100; i++) {
+            for (let ii = 0; ii < 15; ii++) {
+                btns += `<button class="btn" data-x="${ii}" data-y="${i}">???</button>`
+            }
+            btns += '<br>'
+        }
+        btnTable.innerHTML = btns
+        const allBTN = document.querySelectorAll(".btn")
+        allBTN.forEach(btn => {
+            btn.addEventListener("click", () => {
+                const x = btn.dataset.x
+                const y = btn.dataset.y
+                var link = allLINK[`${x},${y}`]
+                if(link == undefined){
+                    link = "https://sites.google.com/view/chogeum/홈"
+                }
+                window.open(link)
+            })
+        })
+    </script>
+</body>
+</html>
